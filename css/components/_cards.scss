@@ -1,0 +1,139 @@
+@use "../abstracts/mixins" as mix;
+@use "../abstracts/variables" as var;
+@use "sass:math";
+
+
+.container{
+    text-align: center;
+    background-color: var.$background-color-primary;
+    padding: (var.$gutter-base * 3) (var.$gutter-base * 2);
+
+    @include mix.mobile-l-styles{
+        padding: (var.$gutter-base * 3) (var.$gutter-base );  
+    }
+
+
+
+    .width{
+        width: 50%;
+        margin: 0 auto var.$gutter-base auto;
+        color: var.$text-color-base ;
+        font-size: 14px;
+
+        @include mix.tablet-styles {
+            width: 85%;
+        }
+    }
+       
+
+    .inner{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        @include mix.tablet-styles {
+            flex-wrap: wrap;  
+        }
+        
+
+        .card{
+            flex-basis: 33.333%;
+            font-size:var.$font-size-small ;
+            color:var.$text-color-base ;
+
+            @include mix.tablet-styles {
+                flex-basis: 100%;  
+            }
+
+            &:not(:last-child){
+                margin-right: var.$gutter-base * 2;
+
+                @include mix.tablet-styles {
+                    margin-right: 0;
+                    margin-bottom: var.$gutter-base * 1.5 ;
+                }
+            }
+
+            i{
+                font-size: 40px;
+                color:  var.$background-color-button;
+                margin-bottom: var.$gutter-base / 2;
+            }
+
+            p{
+               
+                @include mix.tablet-styles {
+                    width: 48% ;
+                    margin-right: auto;
+                    margin-left: auto;
+                }
+
+                @include mix.mobile-l-styles {
+                    width: 65% ;
+                   
+                }
+            
+            }
+
+        }
+
+
+    }
+
+    .form{
+        margin-top: var.$gutter-base * 5;
+
+        p{
+            width: 50%;
+            margin: 0 auto var.$gutter-base auto;
+            color: var.$text-color-base ;
+            font-size: 14px;
+
+            @include mix.tablet-styles {
+               width: 85%;
+            }
+        }
+
+        input{
+            width: 30%;
+            padding: (var.$gutter-base / 5) (var.$gutter-base / 3);
+            margin-right: var.$gutter-base / 2;
+            border: 1px solid lightgray;
+
+            @include mix.tablet-styles {
+                display: block;
+                width: 70%;
+                margin:0 auto (var.$gutter-base / 2) auto;
+                padding: (var.$gutter-base / 2.3) (var.$gutter-base / 3);
+
+            }
+
+            @include mix.mobile-l-styles {
+               
+                width: 100%;
+                
+                padding: (var.$gutter-base / 2.3) (var.$gutter-base / 3);
+
+            }
+        }
+
+        button{
+            background-color: var.$background-color-button;
+            padding: (var.$gutter-base / 3) (var.$gutter-base / 1);
+            border: 0;
+            border-radius: 3px;
+            color: var.$text-color-primary;
+            font-size: var.$font-size-small ;
+            font-weight: var.$font-weight-bold ;
+            cursor: pointer;
+
+            @include mix.tablet-styles {
+                padding: (var.$gutter-base / 2) (var.$gutter-base );
+
+            }
+
+        }
+
+    }
+
+}

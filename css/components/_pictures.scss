@@ -1,0 +1,93 @@
+@use "../abstracts/mixins" as mix;
+@use "../abstracts/variables" as var;
+@use "sass:math";
+
+.pictures{
+    min-height: 100vh;
+    text-align: center;
+    padding: (var.$gutter-base * 3) (var.$gutter-base * 2);
+
+    
+    @include mix.mobile-l-styles {
+        padding: (var.$gutter-base * 3) (var.$gutter-base * 1.5);
+    }
+
+
+    p{
+        width: 50%;
+        margin:0 auto var.$gutter-base auto;
+        color: var.$text-color-base ;
+        font-size: 14px;
+
+        @include mix.tablet-styles {
+            width: 85%;
+        }
+       
+    }
+
+
+    .flex{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+
+        .pic{
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll;
+            height: 180px;
+
+            @include mix.tablet-styles {
+                height: 300px;
+            }
+        }
+
+        .pic1{
+            background-image: url(../../images/coast.jpg);
+            flex-basis: 35%;
+            margin: 0 (var.$gutter-base / 1.5) (var.$gutter-base / 1.5) 0;
+
+            @include mix.tablet-styles {
+                flex-basis: 100%;
+                margin-right: 0;
+            }
+
+        }
+        .pic2{
+            background-image: url(../../images/island.jpg);
+            flex-basis: 60%;
+            margin-bottom: (var.$gutter-base / 1.5);
+
+            @include mix.tablet-styles {
+                flex-basis: 100%;
+            }
+
+        }
+        .pic3{
+            background-image: url(../../images/balloon.jpg);
+            flex-basis: 60%;
+            margin-right: (var.$gutter-base / 1.5);
+
+            @include mix.tablet-styles {
+                flex-basis: 100%;
+                margin-right: 0;
+                margin-bottom: (var.$gutter-base / 1.5) ;
+            }
+        }
+        .pic4{
+            background-image: url(../../images/mountain.jpg);
+            flex-basis: 35%;
+
+            @include mix.tablet-styles {
+                flex-basis: 100%;
+            }
+
+        }
+
+
+    }
+    
+    
+}

@@ -1,0 +1,52 @@
+@use "../abstracts/mixins" as mix;
+@use "../abstracts/variables" as var;
+@use "sass:math";
+
+
+footer{
+    background-color: var.$background-color-secondary;
+    color: #f0eeee90;
+    text-align: center;
+    padding: (var.$gutter-base * 2) 0;
+
+    @include mix.mobile-l-styles {
+        padding: (var.$gutter-base * 2) (var.$gutter-base / 6) ;
+    }
+
+    
+
+    .media{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+        color: white;
+        margin-bottom: var.$gutter-base / 1.5;
+        
+        i{
+            cursor: pointer;
+        }
+
+        i:not(:last-child){
+            margin-right: var.$gutter-base / 2;
+        }
+        
+    }
+
+    span{
+        font-weight: var.$font-weight-bold ;
+        color: var.$text-color-primary;
+    }
+
+    p{
+        margin:0 ;
+
+        @include mix.mobile-l-styles {
+            margin-bottom: var.$gutter-base / 3 ;
+            line-height: normal;
+        }
+
+
+    }
+
+}
