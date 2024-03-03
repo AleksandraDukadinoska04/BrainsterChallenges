@@ -1,0 +1,9 @@
+blabla@gmail.com,Sanja=$2y$10$QUFynAPX8qXOlx2jCiHttO8145ym4E6FdgXrOmuUkfQEFx/n8AMk2
+matej@gmail.com,Matej=$2y$10$hSv3nr9ip/SyS71ZwT0LK.lGhnRpXO1bodVb9xHxURFeKkJ4QUiIm
+mihaela@gmail.com,Mihaela=$2y$10$SOxi11vS1eSUniyrPBNdOO/lo9qdANpsAjDyPzfKjpgpYYJ4ckN6e
+blajhghgbla@gmail.com,Stefan=$2y$10$4lTnaeKYCP8STXVQnQSNuu.P8.Ti2tiIw7K7dVsufWULmrBWtj5VW
+ane.dukadinoska123@gmail.com,Aleksandra=$2y$10$uif3KRoE8enxO6rVkElXCuurwAdB09cGN0PEBO3Hjgz8dwyXkFCQe
+dijana@gmail.com,Dijana=$2y$10$gOWpwgYz8JyILRp7OEt6le1FXqzl6Pgz2NA7amr3FpOrcgtoKJtjK
+marija@gmail.com,Marija=$2y$10$7ZLWKveqlujMx.uvXT8YO./DlQ8lGScP.0r/OyddSQARaUWnIJqQO
+martin@gmail.com,Martin=$2y$10$DcpKd0qB8xmhpVPOFusFJO5yo0rytrvrA/gZxMaykyMbEOr13M23W
+stefani@gmail.com,Stefani=$2y$10$pMyJm1Ds26KacgTUHuEMS.VWczUOsegCc2S9OO1lelAdzkuwEIPnm
