@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Exercise 03</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body
+    class="vh-100 d-flex flex-column justify-content-center align-items-center"
+  >
+    <h1>Exercise 03</h1>
+
+    <script>
+      const number1 = parseInt(prompt("Enter first number!"));
+      const number2 = parseInt(prompt("Enter second number!"));
+      const number3 = parseInt(prompt("Enter third number!"));
+
+      if (isNaN(number1) || isNaN(number2) || isNaN(number3)) {
+        alert("Please make sure to enter only a numbers!");
+        location.reload();
+      }
+
+      let numbersArray = [number1, number2, number3];
+
+      function checkPrimeNumbers(number) {
+        if (number < 2) {
+          return "not prime";
+        }
+        for (let i = 2; i <= Math.sqrt(number); i++) {
+          if (number % i === 0) {
+            return "not prime";
+          }
+        }
+        return "prime";
+      }
+
+      function findSmallestNumber(array) {
+        let smallestNumber = array[0];
+        for (let i = 0; i < array.length; i++) {
+          if (smallestNumber > array[i]) {
+            smallestNumber = array[i];
+          }
+        }
+        return smallestNumber;
+      }
+
+      function findLargestNumber(array) {
+        let largestNumber = array[0];
+        for (let i = 0; i < array.length; i++) {
+          if (array[i] > largestNumber) {
+            largestNumber = array[i];
+          }
+        }
+        return largestNumber;
+      }
+
+      let smallestNumber = findSmallestNumber(numbersArray);
+      let largestNumber = findLargestNumber(numbersArray);
+      let smallestPrimeOrNot = checkPrimeNumbers(smallestNumber);
+      let largestPrimeOrNot = checkPrimeNumbers(largestNumber);
+
+      console.log(`Number 1 = ${number1}`);
+      console.log(`Number 2 = ${number2}`);
+      console.log(`Number 3 = ${number3}`);
+      console.log(`Smallest - ${smallestNumber}, Largest - ${largestNumber} `);
+      console.log(
+        `The smallest number ${smallestNumber} is ${smallestPrimeOrNot} , The largest number ${largestNumber} is ${largestPrimeOrNot}`
+      );
+
+      let numberOne = document.createElement("p");
+      let numberTwo = document.createElement("p");
+      let numberThree = document.createElement("p");
+      let smallestLargest = document.createElement("p");
+      let prime = document.createElement("p");
+
+      numberOne.innerHTML = `Number 1 = ${number1}; `;
+      numberTwo.innerHTML = `Number 2 = ${number2}; `;
+      numberThree.innerHTML = `Number 3 = ${number3}; `;
+      smallestLargest.innerHTML = `Smallest - ${smallestNumber}, Largest - ${largestNumber} `;
+      prime.innerHTML = `The smallest number ${smallestNumber} is ${smallestPrimeOrNot} , The largest number ${largestNumber} is ${largestPrimeOrNot}.`;
+
+      document.body.appendChild(numberOne);
+      document.body.appendChild(numberTwo);
+      document.body.appendChild(numberThree);
+      document.body.appendChild(smallestLargest);
+      document.body.appendChild(prime);
+    </script>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
