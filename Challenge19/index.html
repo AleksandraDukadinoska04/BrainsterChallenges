@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Challenge 19</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <style>
+      #myProgress {
+        width: 100%;
+        background-color: grey;
+      }
+
+      #myBar {
+        width: 1%;
+        height: 30px;
+        background-color: green;
+        text-align: center;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Challenge 19</h1>
+    <ul class="books"></ul>
+
+    <hr class="w-50" />
+
+    <ul class="read"></ul>
+
+    <hr class="w-50" />
+
+    <table cellspacing="0" cellpadding="10">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Max Pages</th>
+          <th>On Page</th>
+          <th>Progress</th>
+        </tr>
+      </thead>
+      <tbody class="tableBody"></tbody>
+    </table>
+
+    <hr class="w-50" />
+
+    <h3>Add a Book to the list:</h3>
+    <form action="" class="form" method="POST">
+      <input type="text" name="title" id="title" placeholder="Book Title" />
+      <input type="text" name="author" id="author" placeholder="Book Author" />
+      <input
+        type="number"
+        name="pageOn"
+        id="pageOn"
+        placeholder="Current Page On..."
+      />
+      <input
+        type="number"
+        name="maxPages"
+        id="maxPages"
+        placeholder="Book Max Pages"
+      />
+      <button type="submit" class="submit">Add to List</button>
+    </form>
+
+    <br /><br /><br />
+
+    <script>
+      function Book(titleArg, authorArg, maxPagesArg, onPageArg) {
+        this.title = titleArg;
+        this.author = authorArg;
+        this.maxPages = maxPagesArg;
+        this.onPage = onPageArg;
+      }
+
+      const book1 = new Book("The Bat", "Jo Nesbo", 550, 0);
+
+      const book2 = new Book("The Snowman", "Jo Nesbo", 510, 255);
+
+      const book3 = new Book("Knife", "Jo Nesbo", 480, 480);
+
+      const book4 = new Book(
+        "Murder on the Orient Express",
+        "Agatha Christie",
+        370,
+        74
+      );
+
+      const book5 = new Book(
+        "The Murder on the Links",
+        "Agatha Christie",
+        350,
+        350
+      );
+
+      const books = [book1, book2, book3, book4, book5];
+
+      books.forEach(function (e) {
+        addNewBook(e);
+      });
+
+      const form = document.querySelector(".form");
+
+      form.addEventListener("submit", validateForm);
+
+      //   FUNSTIONS
+      function addNewBook(book) {
+        let ul = document.querySelector(".books");
+        let ul2 = document.querySelector(".read");
+        let tableBody = document.querySelector(".tableBody");
+
+        ul.innerHTML += `<li> "${book.title}" by ${book.author} </li>`;
+
+        if (book.maxPages > book.onPage) {
+          ul2.innerHTML += `<li style="color: red;">You still need to read "${book.title}" by ${book.author} </li>`;
+        } else {
+          ul2.innerHTML += `<li style="color: green;">You already have read "${book.title}" by ${book.author} </li>`;
+        }
+
+        let percentage = parseInt((book.onPage / book.maxPages) * 100);
+        tableBody.innerHTML += ` <tr>
+                                    <td>${book.title}</td>
+                                    <td>${book.author}</td>
+                                    <td>${book.maxPages}</td>
+                                    <td>${book.onPage}</td>
+                                    <td>
+                                        <div id="myProgress">
+                                            <div id="myBar" style="width:${percentage}% ;">${percentage}%</div>
+                                        </div>
+                                    </td>
+                                </tr>`;
+      }
+
+      function validateForm(e) {
+        e.preventDefault();
+        const title = document.querySelector("#title");
+        const author = document.querySelector("#author");
+        const pageOn = document.querySelector("#pageOn");
+        const maxPages = document.querySelector("#maxPages");
+
+        const titleValue = document.querySelector("#title").value;
+        const authorValue = document.querySelector("#author").value;
+        const pageOnValue = document.querySelector("#pageOn").value;
+        const maxPagesValue = document.querySelector("#maxPages").value;
+
+        let submit = true;
+
+        title.style.borderColor = "green";
+        if (!titleValue) {
+          title.style.borderColor = "red";
+          submit = false;
+        }
+
+        author.style.borderColor = "green";
+        if (!authorValue) {
+          author.style.borderColor = "red";
+          submit = false;
+        }
+
+        pageOn.style.borderColor = "green";
+        if (
+          !pageOnValue ||
+          isNaN(pageOnValue) ||
+          pageOnValue > maxPagesValue ||
+          pageOnValue < 0
+        ) {
+          pageOn.style.borderColor = "red";
+          submit = false;
+        }
+
+        maxPages.style.borderColor = "green";
+        if (
+          !maxPagesValue ||
+          isNaN(pageOnValue) ||
+          maxPagesValue < 10 ||
+          maxPagesValue < pageOnValue
+        ) {
+          maxPages.style.borderColor = "red";
+          submit = false;
+        }
+
+        if (submit) {
+          const newBook = new Book(
+            titleValue,
+            authorValue,
+            maxPagesValue,
+            pageOnValue
+          );
+
+          addNewBook(newBook);
+        }
+      }
+
+      // var i = 0;
+      // function move() {
+      //   var i = 0;
+      //   function move() {
+      //     if (i == 0) {
+      //       i = 1;
+      //       var elem = document.getElementById("myBar");
+      //       var width = 1;
+      //       var id = setInterval(frame, 10);
+      //       function frame() {
+      //         if (width >= 100) {
+      //           clearInterval(id);
+      //           i = 0;
+      //         } else {
+      //           width++;
+      //           elem.style.width = width + "%";
+      //         }
+      //       }
+      //     }
+      //   }
+      // }
+      // move();
+    </script>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
